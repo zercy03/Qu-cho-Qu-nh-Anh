@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heart Animation 💖</title>
+  <style>
+    body {
+      background-color: #f8c9d3; /* Soft pink background */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Dark overlay for better text contrast */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4); /* Darken the background */
+      z-index: -1; /* Place overlay behind the content */
+    }
+
+    .heart {
+      position: relative;
+      width: 100px;
+      height: 90px;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      transform: rotate(-45deg);
+      animation: beat 0.7s infinite;
+      opacity: 0; /* Initially hidden */
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 90px;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 50px;
+      top: 0;
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: rotate(-45deg) scale(1);
+      }
+      50% {
+        transform: rotate(-45deg) scale(1.2);
+      }
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 1.8em;
+      text-align: center;
+      color: #ff9a9e;
+      text-shadow: 0 0 10px #ff4b2b;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0; /* Initially hidden */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .button {
+      padding: 15px 30px;
+      font-size: 1.5em;
+      background-color: #ff416c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #ff4b2b;
+    }
+
+    .embed-container {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 600px;
+      height: 166px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- The overlay -->
+  <div class="overlay"></div>
+
+  <!-- The button -->
+  <button class="button" onclick="startSurprise()">Click here for your surprise</button>
+
+  <!-- The heart animation and message (initially hidden) -->
+  <div class="heart" style="display: none;"></div>
+  <div class="message" style="display: none;">Gửi Quỳnh Anh...<br><br> Bạn bảo là chán nên tui ngồi quậy xíu rồi làm "quà" cho bạn luôn. Mà có nhớ là bạn kêu là thích cái này nên làm thử, nên ngồi nghe nhạc ko đỡ nha.<br><br> Lần sau làm hoành tráng hơn :> 💖</div>
+
+  <!-- Embed SoundCloud player (initially hidden, will show on button click) -->
+  <div class="embed-container" id="soundCloudPlayer" style="display: none;">
+    <iframe width="100%" height="166" scrolling="no" frameborder="no" 
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/mei-qing-230200/neu-nhu-tinh-yeu-da-lang-quen-uong-to-lang-thien-y-thuan&color=%23ff416c&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+  </div>
+
+  <script>
+    function startSurprise() {
+      // Show heart and message by changing their display to block
+      document.querySelector('.heart').style.display = 'block';
+      document.querySelector('.message').style.display = 'block';
+      
+      // Start the animation by changing opacity to 1
+      document.querySelector('.heart').style.opacity = 1;
+      document.querySelector('.message').style.opacity = 1;
+      
+      // Show the SoundCloud player
+      document.getElementById('soundCloudPlayer').style.display = 'block';
+
+      // Hide the button after click
+      document.querySelector('.button').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
